@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Alyssa Smith">
+  <link rel="shortcut icon" href="https://blog.alyssasmith.id.au/static/favicon.ico">
+
+  <title>Trying to install Terminology on OSX - Alyssa Smith</title>
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" href="https://blog.alyssasmith.id.au/feed.xml" />
+
+  <!-- Bootstrap core CSS -->
+  <link href="/static/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="/static/style.css" rel="stylesheet">
+
+  <!-- Syntax highlighting css -->
+  <link href="/static/pygments.css" rel="stylesheet">
+
+  
+<meta property="og:title" content="Trying to install Terminology on OSX - Alyssa Smith">
+<meta property="twitter:title" content="Trying to install Terminology on OSX - Alyssa Smith">
+
+
+
+
+
+
+
+<meta property="og:url" content="https://blog.alyssasmith.id.au/2015-10-30-trying-to-install-terminology-on-osx">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@alyssile">
+
+</head>
+<body>
+  <div class="container">
+
+    
+<article>
+  <aside class="timestamp">
+    <time>Posted by Alyssa Smith on October 30, 2015</time>
+    · <a href="/">view all posts</a>
+  </aside>
+  <h1>Trying to install Terminology on OSX</h1>
+  <content>
+    <p>... and it's not going well.</p>
+<p>I was trying to find a local terminal emulator to provide the <a href="http://liftoffsoftware.com/Products/GateOne">GateOne</a>
+functionality of being able to <code>cat</code> images and show them in the terminal. This led me to
+<a href="http://askubuntu.com/a/426843">this StackOverflow answer</a> where the person linked a fairly cool video of
+<a href="https://www.enlightenment.org/about-terminology">Terminology</a>, a terminal emulator by the creators of
+<a href="https://www.enlightenment.org/start">Enlightenment</a>, a very snazzy window manager. The problem I had is, it doesn't
+seem to have binaries for OSX, and I really wanted to try it out. So I started trying stuff</p>
+<p>Here's some pointers so you can skip a couple steps:</p>
+<ul>
+<li>As of Oct 2015, the versions of efl and elementary in homebrew are 1.14, but the terminology source code expects 1.15. You
+  can either get older source code, or try building efl and elementary from scratch. I chose the latter to start with.</li>
+<li>I installed the homebrew versions of the software first to pull all dependencies. After this you can run
+  <code>brew unlink efl</code>/<code>brew unlink elementary</code> to clean up.</li>
+<li>efl appears to reference a missing file, <code>src/lib/ecore_audio/ecore_audio_obj_out_core_audio.c</code>. It appears to be
+  an optional extra? I removed all references to it in <code>src/Makefile_Ecore_Audio.am</code></li>
+<li>You then have to install automake. Oh, and it has to be automake-1.14.1. To save some time digging through the git log, try this:</li>
+</ul>
+<pre class="lang-python3"><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Homebrew</span><span class="o">/</span><span class="n">homebrew</span><span class="o">/</span><span class="n">raw</span><span class="o">/</span><span class="n">bc1f9b2f4fe36a940f5628a9e5b02aa0f938bd6c</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Formula</span><span class="o">/</span><span class="n">automake</span><span class="o">.</span><span class="n">rb</span> <span class="o">-</span><span class="n">O</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Formula</span><span class="o">/</span><span class="n">automake</span><span class="o">.</span><span class="n">rb</span>
+<span class="n">brew</span> <span class="n">unlink</span> <span class="n">automake</span>
+<span class="n">brew</span> <span class="n">install</span> <span class="n">automake</span>
+</pre>
+<ul>
+<li>The last error I encountered was a clang error for missing symbols for x86_64. I have no idea how to resolve this,
+  so I'm leaving it here. The truncated error is below:</li>
+</ul>
+<pre><code>  CCLD     lib/eio/libeio.la
+Undefined symbols for architecture x86_64:
+...
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+</code></pre>
+<p>Now I'm going to just go ahead and use terminology 1.14. Hopefully that just works.</p>
+<p>Edit: OK, I did that, and it worked. Mostly. Now I have a really miniscule Terminology window.</p>
+<p><img alt="Ignore the __prompt_command messages, it didn't load .bash_profile because it's not an OSX terminal emulator" src="/static/images/terminology1.png" /></p>
+<p>I tried playing a H.264 video and got <code>Missing decoder</code> errors from gstreamer, so I guess that's broken at this point. It works to some degree, that's what I was going for.</p>
+  </content>
+</article>
+
+
+    <footer>
+      <div class="row">
+<!--    <div class="col-md-1 d-none d-md-block img-me-container">
+          <img class="img-me img-fluid" src="/static/me.png">
+        </div> -->
+        <div class="col-md info">
+          <span class="name">Alyssa Smith</span><br>
+          · <a href="https://github.com/alyssadev" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> alyssadev</a>
+          · <a href="https://twitter.com/alyssile" rel="noopener"><i class="fab fa-twitter" aria-hidden="true"></i> alyssile</a>
+          <br>
+          <span class="location"><i class="fas fa-map-marker"></i> Perth, Australia</span>
+        </div>
+        <div class="col-md">
+          <p class="disclaimer">
+            &copy; 2021 &mdash;<br>
+	    Adapted from the blog of <a href="https://blog.thea.codes/">Stargirl Flowers</a><br>
+            All text is available under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0</a> license<br>
+            All code is available under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a> license
+          </p>
+      </div>
+
+    </footer>
+  </div>
+
+  <!-- webfonts & icons-->
+  <link href="/static/fontawesome/css/fontawesome-all.min.css" rel="stylesheet">
+
+</body>
+</html>
