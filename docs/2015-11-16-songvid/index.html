@@ -48,7 +48,7 @@
   </aside>
   <h1>songvid</h1>
   <content>
-    <p>Today my good friend Jeviny asked me to make him a song video for a track on his new album so he could put it on Youtube. Nothing fancy, just a still image of the album art with the album intro in the background. So I spent 15 minutes writing a tool to do that.</p>
+    <p>Today my good friend Jeviny asked me to make her a song video for a track on her new album so she could put it on Youtube. Nothing fancy, just a still image of the album art with the album intro in the background. So I spent 15 minutes writing a tool to do that.</p>
 <p>First I figured out how to do it with ffmpeg.</p>
 <pre class="lang-bash">ffmpeg -loop <span class="m">1</span> -i image.jpg -i audio.mp3 -shortest -c:v libx264 -tune stillimage -c:a libfdk_aac sv_audio.mp4
 </pre>
