@@ -3,8 +3,8 @@
 {% block title %}{{post.title}}{% endblock %}
 
 {% block meta %}
-<meta property="og:title" content="{{post.title}} - Alyssa Smith">
-<meta property="twitter:title" content="{{post.title}} - Alyssa Smith">
+<meta property="og:title" content="{{post.title}} - Aly">
+<meta property="twitter:title" content="{{post.title}} - Aly">
 
 {% if post.description %}
 <meta property="og:description" content="{{post.description}}">
@@ -12,15 +12,15 @@
 {% endif %}
 
 {% if post.preview_image %}
-<meta property="og:image" content="https://blog.alyssasmith.id.au/static/{{post.preview_image}}">
-<meta property="twitter:image" content="https://blog.alyssasmith.id.au/static/{{post.preview_image}}">
+<meta property="og:image" content="https://blog.aly.pet/static/{{post.preview_image}}">
+<meta property="twitter:image" content="https://blog.aly.pet/static/{{post.preview_image}}">
 {% endif %}
 
 {% if post.preview_image_alt %}
 <meta name="twitter:image:alt" content="{{post.preview_image_alt}}">
 {% endif %}
 
-<meta property="og:url" content="https://blog.alyssasmith.id.au/{{post.stem}}">
+<meta property="og:url" content="https://blog.aly.pet/{{post.stem}}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@alyssile">
 {% endblock %}

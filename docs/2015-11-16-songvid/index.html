@@ -5,13 +5,13 @@
 
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="author" content="Alyssa Smith">
-  <link rel="shortcut icon" href="https://blog.alyssasmith.id.au/static/favicon.ico">
+  <meta name="author" content="Aly">
+  <link rel="shortcut icon" href="https://blog.aly.pet/static/favicon.ico">
 
-  <title>songvid - Alyssa Smith</title>
+  <title>songvid - Aly</title>
 
   <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" href="https://blog.alyssasmith.id.au/feed.xml" />
+  <link rel="alternate" type="application/rss+xml" href="https://blog.aly.pet/feed.xml" />
 
   <!-- Bootstrap core CSS -->
   <link href="/static/bootstrap.min.css" rel="stylesheet">
@@ -23,8 +23,8 @@
   <link href="/static/pygments.css" rel="stylesheet">
 
   
-<meta property="og:title" content="songvid - Alyssa Smith">
-<meta property="twitter:title" content="songvid - Alyssa Smith">
+<meta property="og:title" content="songvid - Aly">
+<meta property="twitter:title" content="songvid - Aly">
 
 
 
@@ -32,7 +32,7 @@
 
 
 
-<meta property="og:url" content="https://blog.alyssasmith.id.au/2015-11-16-songvid">
+<meta property="og:url" content="https://blog.aly.pet/2015-11-16-songvid">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@alyssile">
 
@@ -50,7 +50,7 @@
   <content>
     <p>Today my good friend Jeviny asked me to make her a song video for a track on her new album so she could put it on Youtube. Nothing fancy, just a still image of the album art with the album intro in the background. So I spent 15 minutes writing a tool to do that.</p>
 <p>First I figured out how to do it with ffmpeg.</p>
-<pre class="lang-bash">ffmpeg -loop <span class="m">1</span> -i image.jpg -i audio.mp3 -shortest -c:v libx264 -tune stillimage -c:a libfdk_aac sv_audio.mp4
+<pre class="lang-bash">ffmpeg<span class="w"> </span>-loop<span class="w"> </span><span class="m">1</span><span class="w"> </span>-i<span class="w"> </span>image.jpg<span class="w"> </span>-i<span class="w"> </span>audio.mp3<span class="w"> </span>-shortest<span class="w"> </span>-c:v<span class="w"> </span>libx264<span class="w"> </span>-tune<span class="w"> </span>stillimage<span class="w"> </span>-c:a<span class="w"> </span>libfdk_aac<span class="w"> </span>sv_audio.mp4
 </pre>
 <p>Then I took that, and dumped it into a <a href="https://github.com/blha303/songvid/blob/master/songvid/songvid.py#L9">Python module</a>. Pretty simple stuff.</p>
   </content>
@@ -63,11 +63,10 @@
           <img class="img-me img-fluid" src="/static/me.png">
         </div> -->
         <div class="col-md info">
-          <span class="name">Alyssa Smith</span><br>
+          <span class="name">Aly</span><br>
           · <a href="https://github.com/alyssadev" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> alyssadev</a>
-          · <a href="https://twitter.com/alyssile" rel="noopener"><i class="fab fa-twitter" aria-hidden="true"></i> alyssile</a>
           <br>
-          <span class="location"><i class="fas fa-map-marker"></i> Perth, Australia</span>
+          <span class="location"><i class="fas fa-map-marker"></i> Brisbane, Australia</span>
         </div>
         <div class="col-md">
           <p class="disclaimer">
